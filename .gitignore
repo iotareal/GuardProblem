@@ -1,0 +1,9 @@
+# Visual Studio junk
+.vs/
+Debug/
+Release/
+x64/
+x86/
+*.user
+*.db
+*.ipch
