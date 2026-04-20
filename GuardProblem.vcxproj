@@ -140,15 +140,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="DoorGenerator.cpp" />
+    <ClCompile Include="GuardLogic.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Overloads.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Conditions.h" />
+    <ClInclude Include="DoorParameters.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="CustomTypesAndAliases.h" />
+    <ClInclude Include="GuardLogic.h" />
     <ClInclude Include="Overloads.h" />
     <ClInclude Include="Random.h" />
+    <ClInclude Include="Universe.h" />
+    <ClInclude Include="DoorGenerator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

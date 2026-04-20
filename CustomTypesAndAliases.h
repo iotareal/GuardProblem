@@ -1,13 +1,13 @@
 #ifndef CUSTOMTYPESANDALIASES_H
 #define CUSTOMTYPESANDALIASES_H
 class Conditions;
-// Type aliases
+// Type aliases to avoid type mismatches
 namespace TypeAliases {
 	using Celcius = double;
 	using Decibel = double;
 }
 
-// Custom Types
+// Custom Types includes scoped enums for custom literals
 namespace CustomTypes {
 
 	// scoped enum for smells
@@ -15,14 +15,16 @@ namespace CustomTypes {
 	{
 		nothing = 0,
 		grass,
-		machine_oils,
+		machineOils,
+		unknown,
 	};
 
-	struct Universe 
+	enum class DoorType : short
 	{
-		Conditions *door_1{ nullptr };
-		Conditions *door_2{ nullptr };
-		Conditions *door_3{ nullptr };
+		unknown = 0,
+		trap,
+		start,
+		safe,
 	};
 }
 

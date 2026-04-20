@@ -1,22 +1,37 @@
 #include <iostream>
-#include "Conditions.h"
-#include "CustomTypesAndAliases.h"
-#include "Random.h"
+#include "GuardLogic.h"
 #include "Overloads.h"
-namespace CT = CustomTypes;
-namespace TA = TypeAliases;
-namespace RNG = Random;
 
-int main()
-{
-	CT::Universe myuniverse = {
-		new Conditions(RNG::getTemperature_rand(1.2, 10.11),RNG::getLoudness_rand(1.2, 100.11),RNG::getSmell_rand()), 
-		new Conditions(RNG::getTemperature_rand(1.2, 10.11),RNG::getLoudness_rand(1.2, 100.11),RNG::getSmell_rand()), 
-		new Conditions(RNG::getTemperature_rand(1.2, 10.11),RNG::getLoudness_rand(1.2, 100.11),RNG::getSmell_rand()), 
-	};
 
-	std::cout << "Random Temprature(C): "<< myuniverse.door_1->getTemperature() <<'\n';
-	std::cout << "Smells like: "<< myuniverse.door_2->getSmell() <<'\n';
-	std::cout << "Sound like: "<< myuniverse.door_1->getLoudness() <<'\n';
+int main() {
+    while (true) {
+        Universe* currentWorld = new Universe();
 
+        const int doorNumber = mainGuard(currentWorld);
+
+        const auto* chosenDoor = currentWorld->inspectDoor(doorNumber);
+
+        if (!chosenDoor) {
+            std::cout << " --- [SYSTEM]: Guard picked an invalid door! --- \n";
+            break;
+        }
+
+        if (chosenDoor->checkDoorType(CustomTypes::DoorType::safe)) {
+            std::cout << " --- [SYSTEM]: Guard picked safe exit --- \n";
+            break;
+        }
+        else if (chosenDoor->checkDoorType(CustomTypes::DoorType::start)) {
+            std::cout << " --- [SYSTEM]: Guard picked starting door --- \n";
+            std::cout << " --- [RESET] --- \n";
+            delete currentWorld;
+            currentWorld = nullptr;
+            continue;
+        }
+        else {
+            std::cout << " --- [SYSTEM]: Guard picked the wrong door --- \n";
+        }
+        delete currentWorld;
+        currentWorld = nullptr;
+    }
+    return 0;
 }
