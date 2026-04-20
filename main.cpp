@@ -29,6 +29,7 @@ int main() {
         }
         else {
             std::cout << " --- [SYSTEM]: Guard picked the wrong door --- \n";
+            break;
         }
         delete currentWorld;
         currentWorld = nullptr;
